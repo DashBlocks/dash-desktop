@@ -43,7 +43,8 @@
   "overrides": {
     "webpack@4.47.0": {
       "terser-webpack-plugin": "^4.2.3"
-    }
+    },
+    "scratch-vm": "github:DashBlocks/scratch-vm#develop-module"
   },
   "homepage": "https://dashblocks.github.io/desktop",
   "repository": {
