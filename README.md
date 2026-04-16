@@ -1,8 +1,8 @@
-# TurboWarp Desktop
+# Dash Desktop
 
-TurboWarp as a desktop app.
+Dash is a mod of TurboWarp and other mods that adds a JSON category, console mode, new blocks, extensions, customization, and other features.
 
-If you're looking for downloads, head to: https://desktop.turbowarp.org/
+If you're looking for downloads, head to: https://dashblocks.github.io/desktop/
 
 Licensed under the GPLv3.0. See LICENSE for more information.
 
@@ -17,7 +17,7 @@ The website source code is in the `docs` folder.
 We use submodules, so clone using:
 
 ```bash
-git clone --recursive https://github.com/TurboWarp/desktop turbowarp-desktop
+git clone --recursive https://github.com/DashBlocks/desktop dash-desktop
 ```
 
 or run this after cloning:

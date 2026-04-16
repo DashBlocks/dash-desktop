@@ -1,6 +1,6 @@
-const PLATFORM_NAME = 'TurboWarp';
-const APP_NAME = 'TurboWarp Desktop';
-const PACKAGER_NAME = 'TurboWarp Packager';
+const PLATFORM_NAME = 'Dash';
+const APP_NAME = 'Dash Desktop';
+const PACKAGER_NAME = 'Dash Packager';
 
 module.exports = {
   PLATFORM_NAME,

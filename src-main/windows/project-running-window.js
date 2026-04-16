@@ -141,7 +141,7 @@ class ProjectRunningWindow extends AbtractWindow {
       return callback({
         requestHeaders: {
           ...details.requestHeaders,
-          referer: 'https://desktop.turbowarp.org/referer.html'
+          referer: 'https://dashblocks.github.io/desktop/referer.html'
         }
       });
     }

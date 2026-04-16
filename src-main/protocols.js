@@ -64,7 +64,7 @@ const FILE_SCHEMES = {
   },
   'tw-update': {
     root: path.resolve(__dirname, '../src-renderer/update'),
-    csp: "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src https://desktop.turbowarp.org"
+    csp: "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src https://dashblocks.github.io/desktop"
   },
   'tw-security-prompt': {
     root: path.resolve(__dirname, '../src-renderer/security-prompt'),
@@ -154,7 +154,7 @@ const createErrorPageHTML = (request, errorMessage) => `<!DOCTYPE html>
   </head>
   <body bgcolor="white" text="black">
     <h1>Protocol handler error</h1>
-    <p>If you can see this page, <a href="https://github.com/TurboWarp/desktop/issues" target="_blank" rel="noreferrer">please open a GitHub issue</a> or <a href="mailto:contact@turbowarp.org" target="_blank" rel="noreferrer">email us</a> with all the information below.</p>
+    <p>If you can see this page, <a href="https://github.com/DashBlocks/desktop/issues" target="_blank" rel="noreferrer">please open a GitHub issue</a> with all the information below.</p>
     <pre>${escapeXML(errorMessage)}</pre>
     <pre>URL: ${escapeXML(request.url)}</pre>
     <pre>Version ${escapeXML(packageJSON.version)}, Electron ${escapeXML(process.versions.electron)}, Platform ${escapeXML(getPlatform())} ${escapeXML(process.arch)}, Distribution ${escapeXML(getDist())}</pre>

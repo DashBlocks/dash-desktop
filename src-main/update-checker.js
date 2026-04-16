@@ -4,7 +4,7 @@ const packageJSON = require('../package.json');
 const privilegedFetch = require('./fetch');
 
 const currentVersion = packageJSON.version;
-const URL = 'https://desktop.turbowarp.org/version.json';
+const URL = 'https://dashblocks.github.io/desktop/version.json';
 
 /**
  * Determines whether the update checker is even allowed to be enabled
