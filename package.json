@@ -1,12 +1,8 @@
 {
-  "name": "turbowarp-desktop",
-  "description": "Scratch mod with a compiler, dark mode, a bunch of addons, and more.",
-  "version": "1.15.5",
+  "name": "dash-desktop",
+  "description": "Dash is a mod of TurboWarp and other mods that adds a JSON category, console mode, new blocks, extensions, customization, and other features.",
+  "version": "0.0.1",
   "license": "GPL-3.0",
-  "author": {
-    "email": "contact@turbowarp.org",
-    "name": "Thomas Weber"
-  },
   "type": "commonjs",
   "scripts": {
     "fetch": "node scripts/download-library-files.mjs && node scripts/download-packager.mjs && node scripts/prepare-extensions.mjs",
@@ -49,19 +45,18 @@
       "terser-webpack-plugin": "^4.2.3"
     }
   },
-  "homepage": "https://desktop.turbowarp.org/",
+  "homepage": "https://dashblocks.github.io/desktop",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TurboWarp/desktop.git"
+    "url": "https://github.com/DashBlocks/dash-desktop.git"
   },
   "bugs": {
-    "url": "https://github.com/TurboWarp/desktop/issues",
-    "email": "contact@turbowarp.org"
+    "url": "https://github.com/DashBlocks/dash-desktop/issues"
   },
   "main": "./src-main/entrypoint.js",
   "build": {
-    "appId": "org.turbowarp.desktop",
-    "productName": "TurboWarp",
+    "appId": "org.dashblocks.desktop",
+    "productName": "Dash",
     "files": [
       "node_modules/**/*",
       "src-main/**/*",
@@ -97,19 +92,15 @@
     },
     "appx": {
       "artifactName": "${productName}-MS-Store-${version}-${arch}.${ext}",
-      "applicationId": "TurboWarp",
-      "displayName": "TurboWarp",
-      "identityName": "45747ThomasWeber.TurboWarpDesktop",
-      "publisher": "CN=18FA7D4F-01BF-49F2-BF56-782DCEA49C69",
-      "publisherDisplayName": "Thomas Weber",
-      "backgroundColor": "#4c97ff",
+      "applicationId": "DashBlocks",
+      "displayName": "Dash",
+      "identityName": "DashBlocks.DashDesktop",
+      "publisherDisplayName": "Dash Team",
+      "backgroundColor": "#ff8e4c",
       "showNameOnTiles": true,
       "languages": [
         "en-US",
-        "nl",
-        "de",
-        "it",
-        "ko"
+        "ru"
       ]
     },
     "nsis": {
@@ -151,16 +142,16 @@
       "provisioningProfile": "build/development.provisionprofile"
     },
     "linux": {
-      "executableName": "turbowarp-desktop",
+      "executableName": "dash-desktop",
       "artifactName": "${productName}-${os}-${arch}-${version}.${ext}",
       "icon": "./build/",
-      "synopsis": "Mod of Scratch with a compiler and more features.",
-      "description": "TurboWarp is a Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.",
+      "synopsis": "Dash as a Desktop App",
+      "description": "Dash is a mod of TurboWarp and other mods that adds a JSON category, console mode, new blocks, extensions, customization, and other features.",
       "category": "Development",
       "desktop": {
         "entry": {
-          "StartupWMClass": "turbowarp-desktop",
-          "Keywords": "scratch;"
+          "StartupWMClass": "dash-desktop",
+          "Keywords": "scratch;turbowarp;penguinmod;dash;dashblocks"
         }
       },
       "extraFiles": [
@@ -179,7 +170,7 @@
       ]
     },
     "snap": {
-      "summary": "Scratch mod with a compiler, dark mode, a bunch of addons, and more.",
+      "summary": "Dash as a Desktop App",
       "allowNativeWayland": true,
       "plugs": [
         "default",
@@ -193,6 +184,13 @@
       "license": null
     },
     "fileAssociations": [
+      {
+        "ext": "dbp",
+        "name": "DashBlocks Project",
+        "description": "DashBlocks Project",
+        "role": "Editor",
+        "mimeType": "application/x.dash.dbp"
+      },
       {
         "ext": "sb3",
         "name": "Scratch 3 Project",
