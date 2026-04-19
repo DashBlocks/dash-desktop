@@ -19,7 +19,7 @@ jobs:
       with:
         node-version: 24
     - name: Install dependencies
-      run: npm install --loglevel=info --legacy-peer-deps
+      run: npm ci --loglevel=info --legacy-peer-deps
     - name: Fetch
       run: npm run fetch
     - name: Compile
