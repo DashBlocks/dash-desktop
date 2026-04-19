@@ -45,9 +45,9 @@ jobs:
           dist/*.AppImage
     - name: Upload artifacts to tag
       run: |
-        node scripts/upload-to-github-releases.mjs TurboWarp desktop "dist/*.deb"
-        node scripts/upload-to-github-releases.mjs TurboWarp desktop "dist/*.tar.gz"
-        node scripts/upload-to-github-releases.mjs TurboWarp desktop "dist/*.AppImage"
+        node scripts/upload-to-github-releases.mjs DashBlocks dash-desktop "dist/*.deb"
+        node scripts/upload-to-github-releases.mjs DashBlocks dash-desktop "dist/*.tar.gz"
+        node scripts/upload-to-github-releases.mjs DashBlocks dash-desktop "dist/*.AppImage"
       env:
         GH_TOKEN: "${{ github.token }}"
 
@@ -71,29 +71,12 @@ jobs:
       run: npm run webpack:prod
     - name: Package
       run: |
-        # I don't trust GitHub Actions to not accidentally log shell substitutions somewhere, so we
-        # use Python instead of "echo $SECRET >" to write the private key to a file as needed by notarytool.
-        python3 -c "import os; open(os.getenv('APPLE_API_KEY_NAME'), 'w').write(os.getenv('APPLE_API_KEY_DATA'))" >/dev/null 2>&1
-        # @electron/notaraize documentation says key should be an absolute path
-        export APPLE_API_KEY="$(pwd)/$APPLE_API_KEY_NAME"
         # Need to run the universal builds as separate commands or it breaks when @electron/universal
         # diffs the ASARs and finds spurious differences. Not clear why.
-        node release-automation/build.mjs --mac --universal --production
-        node release-automation/build.mjs --mac-legacy-11 --universal --production
+        node release-automation/build.mjs --mac --universal
+        node release-automation/build.mjs --mac-legacy-11 --universal
         # These macOS versions never ran on an Apple Silicon device, so only need x64
-        node release-automation/build.mjs --mac-legacy-10.13-10.14 --mac-legacy-10.15 --x64 --production
-        # for safety
-        rm "$APPLE_API_KEY_NAME"
-      env:
-        APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
-        APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
-        APPLE_API_KEY_NAME: ${{ secrets.APPLE_API_KEY_NAME }}
-        APPLE_API_KEY_DATA: ${{ secrets.APPLE_API_KEY_DATA }}
-        # base64 -i Certificates.p12
-        CSC_LINK: ${{ secrets.APPLE_CSC_LINK }}
-        # electron-builder documentation says password won't be escaped, so don't use any
-        # special characters that the shell will mess with
-        CSC_KEY_PASSWORD: ${{ secrets.APPLE_CSC_KEY_PASSWORD }}
+        node release-automation/build.mjs --mac-legacy-10.13-10.14 --mac-legacy-10.15 --x64
     - name: Print file tree
       run: node scripts/print-file-tree.mjs dist
     - name: Upload artifacts to GitHub Actions
@@ -103,7 +86,7 @@ jobs:
         path: dist/*.dmg
     - name: Upload artifacts to tag
       run: |
-        node scripts/upload-to-github-releases.mjs TurboWarp desktop "dist/*.dmg"
+        node scripts/upload-to-github-releases.mjs DashBlocks dash-desktop "dist/*.dmg"
       env:
         GH_TOKEN: "${{ github.token }}"
 
@@ -151,52 +134,21 @@ jobs:
     - name: Package
       working-directory: D:\repo
       run: |
-        node release-automation/build.mjs --windows --microsoft-store --x64 --ia32 --arm64 --production
+        node release-automation/build.mjs --windows --x64 --ia32 --arm64 --production
         node release-automation/build.mjs --windows-portable --x64 --production
         node release-automation/build.mjs --windows-legacy --ia32 --x64 --production
     - name: Print file tree
       working-directory: D:\repo
       run: node scripts/print-file-tree.mjs dist
-    - name: Upload unsigned artifacts to GitHub Actions
+    - name: Upload artifacts to GitHub Actions
       uses: actions/upload-artifact@v4
       with:
-        name: windows-unsigned
-        path: D:\repo\dist\*.exe
-    - name: Upload Microsoft Store artifact to GitHub Actions
-      uses: actions/upload-artifact@v4
-      with:
-        name: appx
-        path: D:\repo\dist\*.appx
-    - name: Upload unsigned artifacts for SignPath
-      uses: actions/upload-artifact@v4
-      id: signpath-unsigned
-      with:
-        name: artifact-for-signpath
-        # keep this list in sync with the signed artifiact upload below
+        name: windows
         path: |
-          D:\repo\dist\TurboWarp-Setup*x64.exe
-    - name: Sign executables with SignPath
-      uses: signpath/github-action-submit-signing-request@4f13d373e8f0cd8d3c0465ff4877feff27aed2ae
-      with:
-        api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
-        organization-id: 04444052-261e-46eb-8168-ed0eee93c57c
-        project-slug: desktop_
-        signing-policy-slug: release-signing
-        github-artifact-id: ${{ steps.signpath-unsigned.outputs.artifact-id }}
-        artifact-configuration-slug: sign_installers
-        wait-for-completion: true
-        # overwrite the unsigned files
-        output-artifact-directory: D:\repo\dist
-    - name: Upload signed artifacts to GitHub Actions
-      uses: actions/upload-artifact@v4
-      with:
-        name: windows-signed
-        # keep this list in sync with the signpath artifact upload above
-        path: |
-          D:\repo\dist\TurboWarp-Setup*x64.exe
-    - name: Upload signed artifacts to tag
+          D:\repo\dist\*.exe
+    - name: Upload artifacts to tag
       working-directory: D:\repo
       run: |
-        node scripts/upload-to-github-releases.mjs TurboWarp desktop "dist/*.exe"
+        node scripts/upload-to-github-releases.mjs DashBlocks dash-desktop "dist/*.exe"
       env:
         GH_TOKEN: "${{ github.token }}"
