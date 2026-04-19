@@ -35,7 +35,6 @@
     "postcss-loader": "^4.2.0",
     "postcss-simple-vars": "^6.0.3",
     "scratch-gui": "github:DashBlocks/scratch-gui#develop",
-    "scratch-vm": "github:DashBlocks/scratch-vm#develop-module",
     "style-loader": "^0.23.0",
     "url-loader": "^4.1.1",
     "webpack": "4.47.0",
