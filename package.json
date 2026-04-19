@@ -3,6 +3,10 @@
   "description": "Dash is a mod of TurboWarp and other mods that adds a JSON category, console mode, new blocks, extensions, customization, and other features.",
   "version": "0.0.1",
   "license": "GPL-3.0",
+  "author": {
+    "email": "damir.b.dbdev@gmail.com",
+    "name": "Dash Team"
+  },
   "type": "commonjs",
   "scripts": {
     "fetch": "node scripts/download-library-files.mjs && node scripts/download-packager.mjs && node scripts/prepare-extensions.mjs",
