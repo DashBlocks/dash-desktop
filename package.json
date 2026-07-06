@@ -4,7 +4,7 @@
   "version": "0.0.1-beta.2",
   "license": "GPL-3.0",
   "author": {
-    "email": "damir.b.dbdev@outlook.com",
+    "email": "contact@dashblocks.org",
     "name": "Dash Team"
   },
   "type": "commonjs",
@@ -49,7 +49,7 @@
       "terser-webpack-plugin": "^4.2.3"
     }
   },
-  "homepage": "https://dashblocks.github.io/desktop",
+  "homepage": "https://dashblocks.org/desktop",
   "repository": {
     "type": "git",
     "url": "https://github.com/DashBlocks/dash-desktop.git"
