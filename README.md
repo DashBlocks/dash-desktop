@@ -2,7 +2,7 @@
 
 Dash is a mod of TurboWarp and other mods that adds a JSON category, console mode, new blocks, extensions, customization, and other features.
 
-If you're looking for downloads, head to: https://dashblocks.github.io/desktop/
+If you're looking for downloads, head to: https://dashblocks.org/desktop/
 
 Licensed under the GPLv3.0. See LICENSE for more information.
 
