@@ -1,7 +1,7 @@
 {
   "name": "dash-desktop",
   "description": "Dash is a mod of TurboWarp and other mods that adds a JSON category, console mode, new blocks, extensions, customization, and other features.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "GPL-3.0",
   "author": {
     "email": "contact@dashblocks.org",
