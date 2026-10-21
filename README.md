@@ -1,12 +1,10 @@
-# Dash Desktop
+# ONYX
 
-Dash is a mod of TurboWarp and other mods that adds a JSON category, console mode, new blocks, extensions, customization, and other features.
-
-If you're looking for downloads, head to: https://dashblocks.org/desktop/
+ONYX is a intermedia platform that uses scratch as template, a successor of adobe flash and alternate to html
 
 Licensed under the GPLv3.0. See LICENSE for more information.
 
-Parts of this repository are based on [LLK/scratch-desktop](https://github.com/LLK/scratch-desktop).
+ONYX is built off of [Dash]([https://github.com/LLK/scratch-desktop](https://github.com/DashBlocks/dashblocks.github.io)).
 
 ## Website
 
